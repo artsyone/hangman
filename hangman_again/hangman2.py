@@ -17,10 +17,17 @@ def ask_name():
 def get_puzzle():
    
 
-    file_names = os.listdir("data")
+    file_names = os.listdir("data/")
 
     for i,f in enumerate(file_names):
-        print(str(i + 1)+ ") " + f)
+        with open("data/" + f,'r') as file:
+            lines = file.readline()
+
+        print(i, lines)
+          
+    print()
+
+    
 
     choice = input("Which one? ")
     choice = int(choice)
@@ -29,11 +36,12 @@ def get_puzzle():
 
     with open(file,'r') as f:
         lines = f.read().splitlines()
-
-
+    
+  
     category = lines[0]
     puzzle = random.choice(lines[1:])
 
+    
     print(category)
     return(puzzle)
     
